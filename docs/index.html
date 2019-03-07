@@ -164,8 +164,14 @@
         function onclickGithub() {
             controller.mainContainer.messageHandlePing("githubLoadRequest", null, null);
         }
+
+        function onclickValidate() {
+            controller.mainContainer.messageHandlePing("additionalValidationRequest", null, null);
+        }
+
         function onclickFiles(files) {
             controller.mainContainer.messageHandlePing("filesLoadRequest", files, null);
+            document.getElementById("validate_button").disabled = false;
         }
 
         function onclickFolderItem(event) {
@@ -221,6 +227,7 @@
             <span class="detail_container">
                 <button id="github_button" class="button" onclick=onclickGithub()>Load from Github!</button>
                 <button id="local_button" class="button" onclick="document.getElementById('local-files').click();">Load from files...</button>
+                <button id="validate_button" class="button" onclick=onclickValidate() disabled>Validate!</button>
                 <input type="file" multiple directory webkitdirectory accept=".json" id="local-files" name="file" style="display: none" onchange="onclickFiles(document.getElementById('local-files').files)">
             </span>
         </span>

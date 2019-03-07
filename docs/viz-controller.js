@@ -217,6 +217,9 @@ function messageHandlePingMainControl(messageType, data1, data2) {
                 controller.mainContainer.messageHandle("navigateEntitySelect", controller.multiSelectEntityList, singleSelected);
             }
         }
+        else if (messageType == "additionalValidationRequest") {
+            controller.corpus.generateWarnings();
+        }
         else {
             controller.mainContainer.messageHandle(messageType, data1, data2);
         }
