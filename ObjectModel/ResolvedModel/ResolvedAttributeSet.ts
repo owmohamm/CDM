@@ -321,6 +321,7 @@ export class ResolvedAttributeSet extends refCounted {
             if (appliedAttSet && appliedAttSet.size !== rasResult.size) {
                 rasResult = appliedAttSet;
                 rasResult.baseTrait2Attributes = undefined;
+                rasResult.attributeContext = this.attributeContext;
             }
 
             return rasResult;

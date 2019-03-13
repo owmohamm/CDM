@@ -389,8 +389,12 @@ export class CorpusImpl extends FolderImpl implements ICdmCorpusDef {
 
             // is there a registered set?
             // (for the objectdef, not for a reference) of the many documents involved in defining this thing(might be none)
-            const key: string = CorpusImpl.getCacheKeyFromObject(definition.getObjectDef(resOpt), kind);
-            const docsRef: DocSetCollection = this.definitionReferenceDocuments.get(key);
+            const objDef: ICdmObjectDef = definition.getObjectDef(resOpt);
+            let docsRef: DocSetCollection;
+            if (objDef) {
+                const key: string = CorpusImpl.getCacheKeyFromObject(objDef, kind);
+                docsRef = this.definitionReferenceDocuments.get(key);
+            }
 
             if (docsRef) {
                 // each set has doc options. use importPriority to figure out which one we want
